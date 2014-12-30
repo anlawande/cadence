@@ -36,9 +36,9 @@ var app = {
 		app.receivedEvent('deviceready');
 		$(".ui-loader").remove();
 
-		/*getFiles().then(function(entries) {
-			window.alert(entries.length);
-		});*/
+		getFiles().then(function(entries) {
+			window.fileList = entries;
+		});
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
