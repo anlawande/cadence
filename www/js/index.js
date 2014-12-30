@@ -34,44 +34,10 @@ var app = {
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
-		//myMedia = new Media("file:///D:/Music/Avenger - Phoebe.mp3");
-		var parentElement = document.getElementById('deviceready');
-		var listeningElement = parentElement.querySelector('.listening');
-		var receivedElement = parentElement.querySelector('.received');
-
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
-			console.log("======= Got fs" + fs.name);
-
-			var musicDir = fs.root.getDirectory("Music", {create: false, exclusive: false}, function(entry) {
-
-				var rdr = entry.createReader();
-				rdr.readEntries(function(entries) {
-					for(var i = 0; i < entries.length; i++) {
-						console.log(entries[i].fullPath);
-					}
-
-				}, function(err) {
-					console.log("======= ERROR" + err);
-				});
-			}, function(err) {
-				console.log("======= ERROR" + err);
-			});
-		}, function(err) {
-			console.log("======= ERROR" + err);
+		
+		getFiles().then(function(entries) {
+			window.alert(entries.length);
 		});
-		/*dirEntry = new DirectoryEntry("/storage/sdcard1");
-		var directoryReader = dirEntry.createReader();
-
-		// Get a list of all the entries in the directory
-		directoryReader.readEntries(function (entries) {
-			var i;
-			for (i=0; i<entries.length; i++) {
-				receivedElement.innerHTML += entries[i].name;
-			}
-		},function (error) {
-			alert("Failed to list directory contents: " + error.code);
-		});*/
-		//myMedia.play();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
