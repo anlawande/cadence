@@ -25,6 +25,9 @@ function getFiles() {
 				}, function(err) {
 					console.log("======= ERROR" + err);
 				});*/
+				entries = entries.filter(function(entry) {
+					return entry.isFile;
+				});
 				listPromise.resolve(entries);
 			}, function(err) {
 				console.log("======= ERROR" + err);
