@@ -37,3 +37,32 @@ body {
 .appBanner .header {
 	font-size: 1.4em;
 }
+.playerControls {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.playerControls .controlSVG{
+	position: absolute;
+}
+.playerControls .leftBtn {
+	left: 20px;
+	bottom: 45px;
+}
+.playerControls .rightBtn {
+	right: 20px;
+	bottom: 45px;
+}
+.playerControls .playBtn {
+	left: 200px;
+	bottom: 25px;
+}
+.playerControls .stopBtn {
+	right: 200px;
+	bottom: 25px;
+}
+.playerControls .control {
+	fill:yellow;
+	stroke:purple;
+	stroke-width:1;
+}
