@@ -35,6 +35,7 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		$(".ui-loader").remove();
+		window.currMedia = {};
 
 		getFiles().then(function(entries) {
 			window.fileList = entries;
