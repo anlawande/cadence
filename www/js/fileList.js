@@ -1,10 +1,29 @@
 function getFiles() {
-	listPromise = new jQuery.Deferred();
+	var listPromise = new jQuery.Deferred();
+	var linFileList = [];
+	var fileSystem;
+	var pcqueue = new PCQueue({
+		maxParallel: 2,
+		tree: true
+	});
+
+	pcqueue.treeNotify(function() {
+		listPromise.resolve(linFileList);
+	});
 
 	window.resolveLocalFileSystemURL("file:///storage/sdcard1", function(fs) {
-		console.log("======= Got fs" + fs.name);
+		fileSystem = fs;
+		console.log("======= Got fs " + fs.name);
 
-		var musicDir = fs.getDirectory("Music", {create: false, exclusive: false}, function(entry) {
+		var musicDir = fs.getDirectory("Music", {create: false, exclusive: false}, recursFindFiles, handleError);
+	}, function(err) {
+		console.log("======= ERROR" + err);
+	});
+
+	function recursFindFiles(entry) {
+
+		pcqueue.produce(function() {
+			var promise = new jQuery.Deferred();
 
 			var rdr = entry.createReader();
 			rdr.readEntries(function(entries) {
@@ -25,19 +44,33 @@ function getFiles() {
 				}, function(err) {
 					console.log("======= ERROR" + err);
 				});*/
-				entries = entries.filter(function(entry) {
-					return entry.isFile;
-				});
-				listPromise.resolve(entries);
+				var numDirectory = entries.filter(function(a) {
+					return a.isDirectory;
+				}).length;
+				pcqueue.children(numDirectory);
+
+				for(var i = 0; i < entries.length; i++) {
+					if(entries[i].isDirectory) {
+						fileSystem.getDirectory("/"+entries[i].fullPath, {create: false, exclusive: false}, recursFindFiles, handleError);
+					}
+					if(entries[i].isFile)
+						linFileList.push(entries[i]);
+				}
+
+				promise.resolve();
+
 			}, function(err) {
 				console.log("======= ERROR" + err);
+				promise.reject();
 			});
-		}, function(err) {
-			console.log("======= ERROR" + err);
+
+			return promise;
 		});
-	}, function(err) {
+	}
+
+	function handleError(err) {
 		console.log("======= ERROR" + err);
-	});
+	}
 
 	return listPromise.promise();
 }

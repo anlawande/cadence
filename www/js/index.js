@@ -34,12 +34,17 @@ var app = {
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
 		mockAPIs();
+		initDB(function() {
+		});
 		app.receivedEvent('deviceready');
 		$(".ui-loader").remove();
 		window.currMedia = {};
 
 		getFiles().then(function(entries) {
+			console.log("Found " + entries.length + " music files");
 			window.fileList = entries;
+			insertEntries(entries, function() {
+			});
 		});
 	},
 	// Update DOM on a Received Event
