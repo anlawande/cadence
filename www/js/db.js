@@ -20,6 +20,12 @@ function insertEntries(entries, callback) {
 	}
 }
 
+function truncateTracks(callback) {
+	db.transaction(function(tx) {
+		tx.executeSql('DELETE FROM TRACK');
+	}, dbOnError, callback);
+}
+
 function dbOnError(err) {
 	window.alert("There was a db error");
 	console.log("DBError " + arguments);

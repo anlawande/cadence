@@ -40,10 +40,12 @@ var app = {
 		$(".ui-loader").remove();
 		window.currMedia = {};
 
-		getFiles().then(function(entries) {
-			console.log("Found " + entries.length + " music files");
-			window.fileList = entries;
-			insertEntries(entries, function() {
+		$(".updateBtn").on("click", function(){
+			getFiles().then(function(entries) {
+				console.log("Found " + entries.length + " music files");
+				window.fileList = entries;
+				insertEntries(entries, function() {
+				});
 			});
 		});
 	},

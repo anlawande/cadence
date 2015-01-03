@@ -66,3 +66,9 @@ body {
 	stroke:purple;
 	stroke-width:1;
 }
+.updateBtn {
+	position: absolute;
+	right: 0;
+	top: 6px;
+	cursor: pointer;
+}
