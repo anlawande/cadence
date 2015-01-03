@@ -48,6 +48,9 @@ var app = {
 				});
 			});
 		});
+		$(".truncateBtn").on("click", function(){
+			truncateTracks(function(){});
+		});
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {

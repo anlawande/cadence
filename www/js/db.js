@@ -15,7 +15,19 @@ function insertEntries(entries, callback) {
 	function doInsert(tx) {
 		for(var i = 0; i < entries.length; i++) {
 			var entry = entries[i];
-			tx.executeSql("INSERT INTO TRACK(name, path) VALUES('" + entry.name + "', '" + entry.fullPath + "')");
+			(function(entry) {
+				findTrackByPath(entry.fullPath, function(result) {
+					if(result.rows.length === 0) {
+						tx.executeSql("INSERT INTO TRACK(name, path) VALUES('" + entry.name + "', '" + entry.fullPath + "')");
+					}
+				});
+			})(entry);
+		}
+
+		function findTrackByPath(path, callback) {
+			tx.executeSql("select id from TRACK where path = '" + path + "'", [], function(tx, result){
+				callback(result);
+			}, dbOnError);
 		}
 	}
 }

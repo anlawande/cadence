@@ -72,3 +72,9 @@ body {
 	top: 6px;
 	cursor: pointer;
 }
+.truncateBtn {
+	position: absolute;
+	right: 0;
+	top: 26px;
+	cursor: pointer;
+}
