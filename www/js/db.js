@@ -6,6 +6,19 @@ function initDB(callback) {
 		tx.executeSql('CREATE TABLE IF NOT EXISTS TRACK (id INTEGER PRIMARY KEY, name, path)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS PLAYLIST (id unique, name)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS TRACK_PLAYLIST (id unique, playlistid, trackid)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS CONFIG (key VARCHAR PRIMARY KEY, value)');
+		tx.executeSql('SELECT count(*) from CONFIG', [], function(tx, result) {
+			if(result.rows.item(0)["count(*)"] === 0) {
+				tx.executeSql("INSERT INTO CONFIG VALUES('last_played_track', '0')");
+				tx.executeSql("INSERT INTO CONFIG VALUES('last_played_playlist', '0')");
+			}
+		});
+	}
+}
+
+function updateLastPlayed(obj) {
+	if(obj.track) {
+		
 	}
 }
 
