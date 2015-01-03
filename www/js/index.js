@@ -38,19 +38,30 @@ var app = {
 		});
 		app.receivedEvent('deviceready');
 		$(".ui-loader").remove();
-		window.currMedia = {};
 
 		$(".updateBtn").on("click", function(){
 			getFiles().then(function(entries) {
 				console.log("Found " + entries.length + " music files");
-				window.fileList = entries;
 				insertEntries(entries, function() {
+					updateTrackList();
 				});
 			});
 		});
 		$(".truncateBtn").on("click", function(){
 			truncateTracks(function(){});
 		});
+
+		function updateTrackList() {
+			getTracks({}, function(result) {
+				for(var i = 0; i < result.rows.length; i++) {
+					var track = result.rows.item(i);
+					var entry = $("<div class='fileEntry'>" + track.name + "</div>");
+					$("#fileList").append(entry);
+				}
+				window.loadTrack(result.rows.item(0));
+			});
+		}
+		updateTrackList();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {

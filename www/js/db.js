@@ -9,6 +9,14 @@ function initDB(callback) {
 	}
 }
 
+function getTracks(opts, callback) {
+	db.transaction(function(tx) {
+		tx.executeSql("select * from TRACK", [], function(tx, result){
+			callback(result);
+		}, dbOnError);
+	}, dbOnError, function(){});
+}
+
 function insertEntries(entries, callback) {
 	db.transaction(doInsert, dbOnError, callback);
 
