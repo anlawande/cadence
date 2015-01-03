@@ -34,8 +34,7 @@ under the License.
 				<div class="updateBtn">Update</div>
 				<div class="truncateBtn">Truncate</div>
 			</div>
-			<div id="fileList">
-				<div class="fileEntry"></div>
+			<div id="mainView" ng-view>
 			</div>
 			<div class="playerControls" ng-controller="player">
 				<div class="seeker">
@@ -65,11 +64,12 @@ under the License.
 			</div>
 		</div>
 		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-		<script type="text/javascript" src="js/angular.min.js"></script>
-		<script type="text/javascript" src="js/promise-pc.js"></script>
-		<script type="text/javascript" src="js/ID3.js"></script>
+		<script type="text/javascript" src="js/lib/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/lib/angular.min.js"></script>
+		<script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+		<script type="text/javascript" src="js/lib/promise-pc.js"></script>
+		<!--<script type="text/javascript" src="js/ID3.js"></script>-->
 		<!--Mock script-->
 		<script type="text/javascript" src="js/mock.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
