@@ -44,6 +44,7 @@ var app = {
 				console.log("Found " + entries.length + " music files");
 				insertEntries(entries, function() {
 					updateTrackList();
+					window.plugins.toast.showShortBottom('Update complete', function(){}, function(){});
 				});
 			});
 		});

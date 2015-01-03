@@ -76,4 +76,5 @@ function getFiles() {
 }
 
 app.controller("listCtrl", function($scope) {
+	$scope.fileList = [];
 });

@@ -17,6 +17,9 @@ app.controller("player", ["$scope", function($scope) {
 			currMedia.media.stop();
 			currMedia.media.release();
 		}
+		if(!currMedia.lastPlayed.path) {
+			
+		}
 		currMedia.media = new Media(currMedia.lastPlayed.path);
 		//Ripple mock
 		if(window.rippleMock)
@@ -38,8 +41,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 	$locationProvider.html5Mode(true);
 	$routeProvider.
 	when('/', {
-		templateUrl: 'templates/main.html'
-		//controller: 'AddOrderController'
+		templateUrl: 'templates/main.html',
+		controller: 'mainCtrl'
 	}).
 	when('/list', {
 		templateUrl: 'templates/fileList.html',
@@ -49,3 +52,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 		redirectTo: '/'
 	});
 }]);
+
+app.controller("mainCtrl", function($scope) {
+	$scope.displayMsg = "";
+});

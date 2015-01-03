@@ -103,4 +103,13 @@ function mockAPIs() {
 	function readEntries(callback) {
 		callback(mockedEntries.shift());
 	}
+	
+	if(!window.plugins)
+		window.plugins = {};
+	window.plugins.toast = {
+		showShortBottom: function(msg, success, failure) {
+			console.log(msg);
+			success();
+		}
+	};
 }
