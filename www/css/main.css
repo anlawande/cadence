@@ -77,3 +77,9 @@ body {
 	top: 26px;
 	cursor: pointer;
 }
+.fileListBtn {
+	position: absolute;
+	right: 0;
+	top: 46px;
+	cursor: pointer;
+}

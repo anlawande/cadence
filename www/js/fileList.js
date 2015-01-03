@@ -74,3 +74,6 @@ function getFiles() {
 
 	return listPromise.promise();
 }
+
+app.controller("listCtrl", function($scope) {
+});

@@ -53,12 +53,14 @@ var app = {
 
 		function updateTrackList() {
 			getTracks({}, function(result) {
-				for(var i = 0; i < result.rows.length; i++) {
-					var track = result.rows.item(i);
-					var entry = $("<div class='fileEntry'>" + track.name + "</div>");
-					$("#fileList").append(entry);
+				if(result.rows.length > 0) {
+					for(var i = 0; i < result.rows.length; i++) {
+						var track = result.rows.item(i);
+						var entry = $("<div class='fileEntry'>" + track.name + "</div>");
+						$("#fileList").append(entry);
+					}
+					window.loadTrack(result.rows.item(0));
 				}
-				window.loadTrack(result.rows.item(0));
 			});
 		}
 		updateTrackList();

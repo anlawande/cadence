@@ -17,9 +17,14 @@ function initDB(callback) {
 }
 
 function updateLastPlayed(obj) {
-	if(obj.track) {
-		
-	}
+	db.transaction(function(tx) {
+		if(obj.track) {
+			tx.executeSql("UPDATE CONFIG SET value='" + obj.track.id + "' WHERE key='last_played_track'");
+		}
+		if(obj.playlist) {
+			tx.executeSql("UPDATE CONFIG SET value='" + obj.playlist.id + "' WHERE key='last_played_playlist'");
+		}
+	}, dbOnError, function(){});
 }
 
 function getTracks(opts, callback) {

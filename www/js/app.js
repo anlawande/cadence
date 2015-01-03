@@ -1,16 +1,17 @@
-var app = angular.module("MusicRunner", []);
+window.app = angular.module("MusicRunner", ['ngRoute']);
 
 app.controller("player", ["$scope", function($scope) {
 	$scope.currentMedia = {};
 	var currMedia = $scope.currentMedia;
 	currMedia.lastPlayed = {};
-	
+
 	$scope.loadTrack = function(track) {
 		currMedia.lastPlayed = track;
-//		$scope.$digest();
+		updateLastPlayed(track);
+		//		$scope.$digest();
 	}
 	window.loadTrack = $scope.loadTrack;
-	
+
 	$scope.playClick = function() {
 		if(currMedia.isPlaying) {
 			currMedia.media.stop();
@@ -23,7 +24,7 @@ app.controller("player", ["$scope", function($scope) {
 		currMedia.media.play();
 		currMedia.isPlaying = true;
 	};
-	
+
 	$scope.stopClick = function() {
 		if(!currMedia.media)
 			return;
@@ -31,4 +32,20 @@ app.controller("player", ["$scope", function($scope) {
 		currMedia.media.release();
 		currMedia.isPlaying = false;
 	};
+}]);
+
+app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+	$locationProvider.html5Mode(true);
+	$routeProvider.
+	when('/', {
+		templateUrl: 'templates/main.html'
+		//controller: 'AddOrderController'
+	}).
+	when('/list', {
+		templateUrl: 'templates/fileList.html',
+		controller: 'listCtrl'
+	}).
+	otherwise({
+		redirectTo: '/'
+	});
 }]);
