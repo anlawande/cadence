@@ -36,19 +36,19 @@ function mockAPIs() {
 		[
 			{
 				name: 'Armin Van Burren',
-				fullPath: 'file:///D:/Music/Armin Van Burren',
+				fullPath: 'http://localhost:8000/Music/Armin Van Burren',
 				isFile: false,
 				isDirectory: true
 			},
 			{
 				name: 'Airbase - Back',
-				fullPath: 'file:///D:/Music/Airbase - Back.mp3',
+				fullPath: 'http://localhost:8000/Music/Airbase - Back.mp3',
 				isFile: true,
 				isDirectory: false
 			},
 			{
 				name: 'A.M.R. - Sand Dunes (Daniel Kandi remix)',
-				fullPath: 'file:///D:/Music/A.M.R. - Sand Dunes (Daniel Kandi remix).mp3',
+				fullPath: 'http://localhost:8000/Music/A.M.R. - Sand Dunes (Daniel Kandi remix).mp3',
 				isFile: true,
 				isDirectory: false
 			}
@@ -56,7 +56,7 @@ function mockAPIs() {
 		[
 			{
 				name: 'Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix)',
-				fullPath: 'file:///D:/Music/New Folder/Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix).mp3',
+				fullPath: 'http://localhost:8000/Music/New Folder/Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix).mp3',
 				isFile: true,
 				isDirectory: false
 			},
@@ -67,25 +67,25 @@ function mockAPIs() {
 		[
 			{
 				name: 'Armin Van Burren',
-				fullPath: 'file:///D:/Music/Armin Van Burren',
+				fullPath: 'http://localhost:8000/Music/Armin Van Burren',
 				isFile: false,
 				isDirectory: true
 			},
 			{
 				name: 'Airbase - Back',
-				fullPath: 'file:///D:/Music/Airbase - Back.mp3',
+				fullPath: 'http://localhost:8000/Music/Airbase - Back.mp3',
 				isFile: true,
 				isDirectory: false
 			},
 			{
 				name: 'A.M.R. - Sand Dunes (Daniel Kandi remix)',
-				fullPath: 'file:///D:/Music/A.M.R. - Sand Dunes (Daniel Kandi remix).mp3',
+				fullPath: 'http://localhost:8000/Music/A.M.R. - Sand Dunes (Daniel Kandi remix).mp3',
 				isFile: true,
 				isDirectory: false
 			},
 			{
 				name: 'Bjorn Akesson - Paint Pyramids',
-				fullPath: 'file:///D:/Music/Bjorn Akesson - Paint Pyramids.mp3',
+				fullPath: 'http://localhost:8000/Music/Bjorn Akesson - Paint Pyramids.mp3',
 				isFile: true,
 				isDirectory: false
 			},
@@ -93,7 +93,7 @@ function mockAPIs() {
 		[
 			{
 				name: 'Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix)',
-				fullPath: 'file:///D:/Music/New Folder/Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix).mp3',
+				fullPath: 'http://localhost:8000/Music/New Folder/Abstract Vision – Crystal Cource (Ilya Soloviev & Poshout pres. Crystal Design Remix).mp3',
 				isFile: true,
 				isDirectory: false
 			},
