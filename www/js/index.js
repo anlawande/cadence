@@ -43,7 +43,7 @@ var app = {
 			getFiles().then(function(entries) {
 				console.log("Found " + entries.length + " music files");
 				insertEntries(entries, function() {
-					updateTrackList();
+					getTrackList();
 					window.plugins.toast.showShortBottom('Update complete', function(){}, function(){});
 				});
 			});
@@ -52,19 +52,21 @@ var app = {
 			truncateTracks(function(){});
 		});
 
-		function updateTrackList() {
+		window.getTrackList = function() {
 			getTracks({}, function(result) {
+				window.tracks = [];
 				if(result.rows.length > 0) {
 					for(var i = 0; i < result.rows.length; i++) {
 						var track = result.rows.item(i);
 						var entry = $("<div class='fileEntry'>" + track.name + "</div>");
 						$("#fileList").append(entry);
+						tracks.push(track);
 					}
 					window.loadTrack(result.rows.item(0));
 				}
 			});
 		}
-		updateTrackList();
+		getTrackList();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {

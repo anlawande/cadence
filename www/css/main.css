@@ -54,11 +54,11 @@ body {
 	bottom: 45px;
 }
 .playerControls .playBtn {
-	left: 200px;
+	left: 30%;
 	bottom: 25px;
 }
 .playerControls .stopBtn {
-	right: 200px;
+	right: 30%;
 	bottom: 25px;
 }
 .playerControls .control {
@@ -83,4 +83,21 @@ body {
 	right: 0;
 	top: 46px;
 	cursor: pointer;
+}
+.tabs {
+	border-bottom: 1px solid gray;
+}
+.tabItem {
+	float: left;
+	border-right: 1px solid gray;
+	margin: 0;
+	padding: 2px 5px;
+	cursor: pointer;
+	border-bottom: 3px solid rgba(0,0,0,0);
+}
+.tabItem.selected {
+	border-bottom: 3px solid gray;
+}
+.clearFix {
+	clear: both;
 }
