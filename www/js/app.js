@@ -38,7 +38,7 @@ app.controller("player", ["$scope", function($scope) {
 }]);
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-	$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode(false);
 	$routeProvider.
 	when('/', {
 		templateUrl: 'templates/main.html',
