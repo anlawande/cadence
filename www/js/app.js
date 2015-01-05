@@ -43,6 +43,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 	when('/', {
 		templateUrl: 'templates/main.html',
 		controller: 'mainCtrl'
+	})
+	.when('/playlist/:mode/:playlistid?', {
+		templateUrl: 'templates/playlist.html',
+		controller: 'playlist'
 	}).
 	when('/list', {
 		templateUrl: 'templates/fileList.html',
@@ -56,3 +60,13 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
 app.controller("mainCtrl", function($scope) {
 	$scope.displayMsg = "";
 });
+
+app.controller("playlist", ["$scope", "$routeParams", function($scope, $routeParams) {
+	$scope.mode = $routeParams.mode;
+	$scope.playlistid = $routeParams.playlistid;
+	
+	if($scope.mode === "new") {
+		$scope.playlist = {};
+		$scope.tracks = window.tracks;
+	}
+}]);

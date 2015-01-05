@@ -77,6 +77,7 @@ function getFiles() {
 
 app.controller("listCtrl", function($scope) {
 	$scope.tracks = [];
+	$scope.playlists = [];
 	$scope.currentTab = "playlist";
 
 	$scope.updateTrackList = function() {

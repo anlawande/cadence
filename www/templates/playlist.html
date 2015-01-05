@@ -1,0 +1,12 @@
+<div class="formCont">
+	<div class="playlistInfo">
+		<div class="playlistName">
+			<div class="lbl">Playlist Name</div>
+			<input type="text" ng-model="playlist.name">
+		</div>
+	</div>
+	<div class="lbl" style="margin-top: 10px;border-top: 1px solid darkgrey;padding-top: 5px;">Tracks</div>
+	<div class="trackList">
+		<div class="fileEntry" ng-repeat="track in tracks">{{track.name}}</div>
+	</div>
+</div>

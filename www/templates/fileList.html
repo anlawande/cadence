@@ -1,10 +1,14 @@
 <div id="fileListCont">
 	<div class="tabs">
-		<div class="tabItem" ng-click="tabClick('playlist')">Playlists</div>
-		<div class="tabItem" ng-click="tabClick('track')">Tracks</div>
+		<div class="tabItem" ng-click="tabClick('playlist')" ng-class="{selected: currentTab === 'playlist'}">Playlists</div>
+		<div class="tabItem" ng-click="tabClick('track')" ng-class="{selected: currentTab === 'track'}">Tracks</div>
 		<div class="clearFix"></div>
 	</div>
-	<div class="trackList" ng-show="currentTab === 'track'">
+	<div class="trackList" ng-if="currentTab === 'playlist'">
+		<div class="newBtn"><a href="/playlist/new">+</a></div>
+		<div class="fileEntry" ng-repeat="playlist in playlists">{{track.name}}</div>
+	</div>
+	<div class="trackList" ng-if="currentTab === 'track'">
 		<div class="fileEntry" ng-repeat="track in tracks">{{track.name}}</div>
 	</div>
 </div>

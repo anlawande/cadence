@@ -36,6 +36,9 @@ body {
 .appBanner .header {
 	font-size: 1.4em;
 }
+#mainView {
+	margin: 5px;
+}
 .playerControls {
 	position: absolute;
 	bottom: 0;
@@ -100,4 +103,35 @@ body {
 }
 .clearFix {
 	clear: both;
+}
+.newBtn {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	border-radius: 50px;
+	border: 2px solid rgb(232, 240, 158);
+	background-color: rgb(246, 253, 181);
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+.newBtn a {
+	text-decoration: none;
+	color: black;
+}
+.trackList {
+	position: relative;
+}
+.fileEntry {
+	font-size: 0.8em;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: rgb(171, 171, 171);
+	/* border: 1px solid rgb(197, 197, 197); */
+	padding: 2px 5px;
+}
+.fileEntry:last-child {
+	border-bottom-width: 1px;
 }
